@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="./efav.ico">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Tasker List</title>
+</head>
+<body>
+    <header>
+        <h1>Tasks</h1>
+    </header>
+    
+    <main>
+        <div id="container">
+            <table id="taskList">
+                <thead>
+                    <tr>
+                        <th onclick="getTasks('title', 'asc')">Title</th>
+                        <th onclick="getTasks('description', 'asc')">Description</th>
+                        <th onclick="getTasks('due_date', 'asc')">Due Date</th>
+                        <th onclick="getTasks('completed', 'asc')">Completed</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+            <button id="addTaskButton" onclick="showAddModal()">Add Task</button>
+        </div>
+
+        <div id="editModal" style="display:none;" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
+            <div id="modalContent">
+                <h2 id="modalTitle">Add New Task</h2>
+                <form id="editTaskForm">
+                    <input type="hidden" id="editTaskId">
+
+                    <label for="editTitle">Title</label>
+                    <input type="text" id="editTitle" required><br><br>
+
+                    <label for="editDescription">Description</label>
+                    <input type="text" id="editDescription"><br><br>
+
+                    <label for="editDueDate">Due Date</label>
+                    <input type="date" id="editDueDate" required><br><br>
+
+                    <label for="editCompleted">Completed</label>
+                    <input type="checkbox" id="editCompleted"><br><br>
+                    
+                    <button type="button" class="modalButtons" onclick="hideModal()">Cancel</button>
+                    <button type="button" id="saveButton" class="modalButtons" onclick="saveTask()">Save Task</button>
+
+                </form>
+            </div>
+        </div>
+
+       
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+
